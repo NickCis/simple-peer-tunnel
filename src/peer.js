@@ -13,6 +13,15 @@ async function main({ id: peerId, port }) {
   const connectionManager = new SimplePeerJs({ fetch, WebSocket, wrtc });
   const conn = await connectionManager.connect(peerId);
 
+  conn.peer.on('error', err => {
+    console.error('Error:', err.toString());
+  });
+
+  conn.peer.on('close', () => {
+    console.log('Connection closed');
+    process.exit(0);
+  });
+
   console.log('Connected!');
 
   const tcpManager = {};
