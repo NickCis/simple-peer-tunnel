@@ -1,0 +1,24 @@
+{
+  "name": "simple-peer-tunnel",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "format": "prettier --write 'src/**/*.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "simple-peer-tunnel": "./src/main.js"
+  },
+  "author": "Nicolas Cisco",
+  "license": "MIT",
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "simple-peerjs": "^1.0.1",
+    "wrtc": "^0.4.6",
+    "ws": "^7.4.1",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  }
+}
