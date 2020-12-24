@@ -8,7 +8,8 @@ let counter = 0;
 
 async function main({ id: peerId, port, ice }) {
   console.log('Connecting to peer', peerId);
-  const connectionManager = new SimplePeerJs(simplePeerJsConf({ ice }));
+  const conf = simplePeerJsConf({ ice });
+  const connectionManager = new SimplePeerJs(conf);
   const conn = await connectionManager.connect(peerId);
 
   conn.peer.on('error', err => {

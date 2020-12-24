@@ -11,9 +11,11 @@ function simplePeerJsConf({ ice } = {}) {
     for (const server of ice) {
       const url = new URL(server);
       const iceServer = {
-        url: [url.protocol, url.host, url.pathname, url.search, url.hash]
-          .filter(Boolean)
-          .join(''),
+        urls: [
+          [url.protocol, url.host, url.pathname, url.search, url.hash]
+            .filter(Boolean)
+            .join(''),
+        ],
       };
 
       if (url.username && url.password) {
@@ -24,7 +26,9 @@ function simplePeerJsConf({ ice } = {}) {
       iceServers.push(iceServer);
     }
 
-    conf.config = { iceServers };
+    conf.simplePeer = {
+      config: { iceServers },
+    };
   }
 
   return conf;
