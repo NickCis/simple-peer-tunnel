@@ -27,6 +27,12 @@ const argv = yargs(hideBin(process.argv))
         default: 8080,
       });
   })
+  .option('ice', {
+    alias: 'i',
+    describe:
+      'Ice servers (url parseable). eg.: `turn://username:password@example.com/`',
+    type: 'array',
+  })
   .demandCommand()
   .help().argv;
 

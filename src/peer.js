@@ -1,16 +1,14 @@
-const fetch = require('node-fetch');
-const WebSocket = require('ws');
-const wrtc = require('wrtc');
 const SimplePeerJs = require('simple-peerjs');
 const net = require('net');
 
 const { header, MuxReader } = require('./mux');
+const { simplePeerJsConf } = require('./conf');
 
 let counter = 0;
 
-async function main({ id: peerId, port }) {
+async function main({ id: peerId, port, ice }) {
   console.log('Connecting to peer', peerId);
-  const connectionManager = new SimplePeerJs({ fetch, WebSocket, wrtc });
+  const connectionManager = new SimplePeerJs(simplePeerJsConf({ ice }));
   const conn = await connectionManager.connect(peerId);
 
   conn.peer.on('error', err => {
